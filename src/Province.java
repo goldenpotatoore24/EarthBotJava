@@ -4,15 +4,18 @@ public class Province {
     private String name;
     private Pop[] pops = new Pop[0];
     private Building[] buildings;
+    private Market market;
 
 
-    public Province(Nation nation, double devastation, String name)
+    public Province(Nation nation, double devastation, String name, Market market)
     {
 
         this.nation = nation;
         this.devastation = devastation;
         this.name = name;
+        this.market = market;
         nation.provinceArrayPush(this);
+        market.provinceArrayPush(this);
 
     }
 
@@ -41,6 +44,15 @@ public class Province {
 
 
     //SETTER AND GETTER METHODS
+
+
+    public Market getMarket() {
+        return market;
+    }
+
+    public Nation getNation() {
+        return nation;
+    }
 
     public String getName() {
         return name;

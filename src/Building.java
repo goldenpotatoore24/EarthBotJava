@@ -1,10 +1,12 @@
 public class Building {
     private Company owner;
+    private GoodAmt goodReserves;
     private Good producedGood;
     private double efficiency;
     private int workers;
     private Province location;
     private String type;
+    private double productionValue;
 
     public Building(Company owner, Good producedGood, double efficiency, int workers, Province location, String type)
     {
@@ -17,6 +19,30 @@ public class Building {
         owner.buildingArrayPush(this);
         location.buildingArrayPush(this);
     }
+
+    public Nation getNation()
+    {
+        return location.getNation();
+    }
+
+    public Market getMarket()
+    {
+        return location.getMarket();
+    }
+
+
+    public void updateProductionValue()
+    {
+        productionValue = workers * efficiency;
+    }
+
+    public void produce()
+    {
+        updateProductionValue();
+        goodReserves = new GoodAmt(productionValue / producedGood.getProductionCost(), producedGood, this);
+
+    }
+
 
 
 

@@ -6,10 +6,12 @@ public class main {
     public static void main(String[] args) {
 
 
+        Good banana = new Good("banana", 10, 1);
         Nation nation1 = new Nation(realMain, "United States of America");
-        Province province1 = new Province(nation1, 50.0, "Mountain View");
-        Province province2 = new Province(nation1, 30, "Redwood City");
-        Province province3 = new Province(nation1, 0, "San Mateo");
+        Market market1 = new Market("Bay Area", nation1, new Nation[]{nation1});
+        Province province1 = new Province(nation1, 50.0, "Mountain View", market1);
+        Province province2 = new Province(nation1, 30, "Redwood City", market1);
+        Province province3 = new Province(nation1, 0, "San Mateo", market1);
 
         Pop pop1 = new Pop(50, province1, 150, 140);
         Pop pop2 = new Pop(30, province2, 1000, 500);

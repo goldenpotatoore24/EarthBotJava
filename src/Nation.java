@@ -3,6 +3,7 @@ public class Nation {
     private String name;
     private Province provinces[] = new Province[0];
 
+
     public Nation(main game, String name) {
         this.game = game;
         this.name = name;

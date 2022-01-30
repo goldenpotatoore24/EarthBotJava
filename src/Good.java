@@ -4,19 +4,20 @@ public class Good {
     private double value;
     private double supply;
     private double demand;
+    private double productionCost;
 
-    public Good(String type, double value, double supply, double demand)
-    {
+    public Good(String type, double value, double productionCost) {
         this.type = type;
         this.value = value;
-        this.supply = supply;
-        this.demand = demand;
+        this.productionCost = productionCost;
     }
 
     public void calculateNewValue()
     {
         //TODO: Find a way to calculate a new value from supply and demand
     }
+
+    //GETTER AND SETTER METHODS
 
     public String getType() {
         return type;
@@ -30,12 +31,24 @@ public class Good {
         return value;
     }
 
+    public double getProductionCost() {
+        return productionCost;
+    }
+
+    public void setProductionCost(double productionCost) {
+        this.productionCost = productionCost;
+    }
+
     public void setValue(double value) {
         this.value = value;
     }
 
     public double getSupply() {
         return supply;
+    }
+
+    public void addSupply(double supply) {
+        this.supply += supply;
     }
 
     public void setSupply(double supply) {
