@@ -1,16 +1,18 @@
 public class Province {
     private double devastation;
+    private Nation nation;
     private String name;
     private Pop[] pops = new Pop[0];
     private Building[] buildings;
 
 
-    public Province(double devastation, String name)
+    public Province(Nation nation, double devastation, String name)
     {
 
+        this.nation = nation;
         this.devastation = devastation;
         this.name = name;
-
+        nation.provinceArrayPush(this);
 
     }
 

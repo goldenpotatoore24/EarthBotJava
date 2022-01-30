@@ -13,6 +13,9 @@ public class main {
 
         Pop pop1 = new Pop(50, province1, 150, 140);
         Pop pop2 = new Pop(30, province2, 1000, 500);
+        Pop pop3 = new Pop(25, province1, 410, 340);
+        Pop pop4 = new Pop(100, province3, 123, 53);
+
 
         for(Nation nation : realMain.nations) {
 
