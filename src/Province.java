@@ -17,6 +17,10 @@ public class Province {
     public void popArrayPush(Pop input)
     {
         Pop[] newArr = new Pop[pops.length + 1];
+        for(int i = 0; i < pops.length; i++)
+        {
+            newArr[i] = pops[i];
+        }
         newArr[newArr.length - 1] = input;
         pops = newArr;
     }
