@@ -11,6 +11,8 @@ public class Pop {
     {
         happiness = happinessIn;
         location = locationIn;
+        location.popArrayPush(this);
+        System.out.println(location.getPops().length);
         population = populationIn;
         dependents = dependentsIn;
 
