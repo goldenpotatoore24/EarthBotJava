@@ -6,6 +6,6 @@ public class main {
         System.out.println("Deez Nuts");
 
     }
-    
+
 
 }
