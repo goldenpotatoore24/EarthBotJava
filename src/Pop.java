@@ -21,17 +21,31 @@ public class Pop {
 
 
 
-    public Character[] charArrayPush(Character[] chars, Character input)
+    public void characterArrayPush(Character input)
     {
-       Character[] newArr = new Character[chars.length + 1];
-       newArr[newArr.length - 1] = input;
-       return newArr;
+        Character[] newArr = new Character[characters.length + 1];
+        for(int i = 0; i < characters.length; i++)
+        {
+            newArr[i] = characters[i];
+        }
+        newArr[newArr.length - 1] = input;
+        characters = newArr;
     }
 
 
     public String toString()
     {
-        return "This pop has a happiness of " + happiness + " and a population of " + population + ", " + dependents + " of which are dependents. They live in " + location.getName();
+        String txt = "This pop has a happiness of " + happiness + " and a population of " + population + ", " + dependents + " of which are dependents. They live in " + location.getName();
+        if(characters.length > 0)
+        {
+            txt += ". Its characters are: ";
+            for(Character character : characters)
+            {
+                txt += character.getName() + " ";
+            }
+        }
+
+        return txt;
     }
 
 

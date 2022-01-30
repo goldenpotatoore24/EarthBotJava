@@ -15,6 +15,9 @@ public class main {
         Pop pop2 = new Pop(30, province2, 1000, 500);
         Pop pop3 = new Pop(25, province1, 410, 340);
         Pop pop4 = new Pop(100, province3, 123, 53);
+        Character char1 = new Character("Steve Job", pop2);
+        Character char2 = new Character("Bill Gate", pop3);
+        Character char3 = new Character("tim ", pop3);
 
 
         for(Nation nation : realMain.nations) {

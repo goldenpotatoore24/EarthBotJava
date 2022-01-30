@@ -12,6 +12,7 @@ public class Company {
     }
 
 
+
     public void buildingArrayPush(Building input)
     {
         Building[] newArr = new Building[buildings.length + 1];
