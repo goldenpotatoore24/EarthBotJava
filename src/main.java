@@ -3,7 +3,9 @@ public class main {
 
     public static void main(String[] args) {
 
-        System.out.println("Deez Nuts");
+        Province province1 = new Province();
+
+        Pop pop1 = new Pop(50, province1);
 
     }
 
