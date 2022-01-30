@@ -8,4 +8,8 @@ public class Province {
         this.devastation = devastation;
         this.name = name;
     }
+
+    public String getName() {
+        return name;
+    }
 }

@@ -3,11 +3,17 @@ public class Pop {
     private double happiness;
     private Province location;
     private Character[] characters = new Character[0];
+    private int population;
+    private int dependents;
 
-    public Pop (double happinessIn, Province locationIn)
+
+    public Pop (double happinessIn, Province locationIn, int populationIn, int dependentsIn)
     {
         happiness = happinessIn;
         location = locationIn;
+        population = populationIn;
+        dependents = dependentsIn;
+
 
     }
 
@@ -18,8 +24,15 @@ public class Pop {
     {
        Character[] newArr = new Character[chars.length + 1];
        newArr[newArr.length - 1] = input;
-        return newArr;
+       return newArr;
     }
+
+
+    public String toString()
+    {
+        return "This pop has a happiness of " + happiness + " and a population of " + population + ", " + dependents + " of which are dependents. They live in " + location.getName();
+    }
+
 
     //GETTER AND SETTER METHODS
 
