@@ -1,4 +1,5 @@
 public class Good {
+
     private String type;
     private double value;
     private double supply;

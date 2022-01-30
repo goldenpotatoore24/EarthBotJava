@@ -1,15 +1,19 @@
 public class Building {
+    private Company owner;
     private Good producedGood;
     private double efficiency;
     private int workers;
     private Province location;
 
-    public Building(Good producedGood, double efficiency, int workers, Province location)
+    public Building(Company owner, Good producedGood, double efficiency, int workers, Province location)
     {
+        this.owner = owner;
         this.producedGood = producedGood;
         this.efficiency = efficiency;
         this.workers = workers;
         this.location = location;
+        owner.buildingArrayPush(this);
+        location.buildingArrayPush(this);
     }
 
 

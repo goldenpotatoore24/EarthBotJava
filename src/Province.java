@@ -27,6 +27,17 @@ public class Province {
         pops = newArr;
     }
 
+    public void buildingArrayPush(Building input)
+    {
+        Building[] newArr = new Building[buildings.length + 1];
+        for(int i = 0; i < buildings.length; i++)
+        {
+            newArr[i] = buildings[i];
+        }
+        newArr[newArr.length - 1] = input;
+        buildings = newArr;
+    }
+
 
 
     //SETTER AND GETTER METHODS
