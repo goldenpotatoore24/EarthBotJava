@@ -68,7 +68,7 @@ public static void tick()
                 hours++;
                 hourTick = true;
             } else hourTick = false;
-            // ALL TIMED FUNCTIONS
+            // ALL TIMED FXNS
             if(minTick)
             {
                 System.out.println("Minute Tick");
