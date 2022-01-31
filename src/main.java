@@ -9,7 +9,7 @@ public class main {
 
     private static main realMain = new main();
     private  Nation[] nations = new Nation[0];
-    private static int tick = 55;
+    private static int tick = 0;
     private static int mins = 0;
     private static int hours = 0;
     private static Market[] markets = new Market[0];
