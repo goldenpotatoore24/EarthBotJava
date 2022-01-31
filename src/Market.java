@@ -9,6 +9,7 @@ public class Market {
         this.name = name;
         this.leader = leader;
         this.members = members;
+        leader.getGame().marketArrayPush(this);
 
     }
 
@@ -33,5 +34,17 @@ public class Market {
         newArr[newArr.length - 1] = input;
         provinces = newArr;
     }
+
+    public String toString()
+    {
+        String txt = "Market " + name + " has";
+        for(GoodAmt good : goods)
+        {
+            txt += " " + good.getAmt() + " " + good.getGood().getType() + "s.";
+        }
+        return txt;
+
+    }
+
 
 }

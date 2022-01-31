@@ -15,6 +15,10 @@ public class Nation {
         return provinces;
     }
 
+    public main getGame() {
+        return game;
+    }
+
     public void provinceArrayPush(Province input)
     {
         Province[] newArr = new Province[provinces.length + 1];

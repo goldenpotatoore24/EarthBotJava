@@ -9,4 +9,16 @@ public class GoodAmt {
         this.producer = producer;
         producer.getMarket().goodArrayPush(this);
     }
+
+    public double getAmt() {
+        return amt;
+    }
+
+    public Good getGood() {
+        return good;
+    }
+
+    public Building getProducer() {
+        return producer;
+    }
 }

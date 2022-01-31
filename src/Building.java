@@ -5,25 +5,31 @@ public class Building {
     private double efficiency;
     private int workers;
     private Province location;
-    private String type;
+
+
     private double productionValue;
 
-    public Building(Company owner, Good producedGood, double efficiency, int workers, Province location, String type)
+    public Building(Company owner, Good producedGood, double efficiency, Province location)
     {
         this.owner = owner;
         this.producedGood = producedGood;
         this.efficiency = efficiency;
-        this.workers = workers;
         this.location = location;
-        this.type = type;
+        productionValue = workers * efficiency;
+
         owner.buildingArrayPush(this);
+
         location.buildingArrayPush(this);
+
+
     }
 
     public Nation getNation()
     {
         return location.getNation();
     }
+
+
 
     public Market getMarket()
     {
@@ -68,6 +74,10 @@ public class Building {
 
     public void setWorkers(int workers) {
         this.workers = workers;
+    }
+
+    public void addWorkers(int workers) {
+        this.workers += workers;
     }
 
     public Province getLocation() {

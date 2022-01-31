@@ -3,7 +3,7 @@ public class Province {
     private Nation nation;
     private String name;
     private Pop[] pops = new Pop[0];
-    private Building[] buildings;
+    private Building[] buildings = new Building[0];
     private Market market;
 
 
@@ -45,6 +45,10 @@ public class Province {
 
     //SETTER AND GETTER METHODS
 
+
+    public Building[] getBuildings() {
+        return buildings;
+    }
 
     public Market getMarket() {
         return market;
