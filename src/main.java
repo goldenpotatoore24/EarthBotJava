@@ -1,5 +1,6 @@
-import java.util.Timer;
-import java.util.TimerTask;
+// FOR CONT: SEE IF SHIT PRODUCES
+
+import java.util.ArrayList;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
@@ -13,13 +14,17 @@ public class main {
     private static int mins = 0;
     private static int hours = 0;
     private static Market[] markets = new Market[0];
+    private static ArrayList<Good> Goods = new ArrayList<Good>();
+
 
     public static void main(String[] args) {
 
 
 
-        Good banana = new Good("banana", 20, 1);
-        Nation nation1 = new Nation(realMain, "United States of America");
+        Goods.add(new Good("Banana", 20, 1));
+        Goods.add(new Good("Unemployment Benefits", 0, 50));
+
+        Nation nation1 = new Nation(realMain, "United States of America", new Character("joe boden"));
         Market market1 = new Market("Bay Area", nation1, new Nation[]{nation1});
         Province province1 = new Province(nation1, 50.0, "Mountain View", market1);
         Province province2 = new Province(nation1, 30, "Redwood City", market1);
@@ -34,10 +39,11 @@ public class main {
         Character char2 = new Character("Bill Gate", pop3);
         Character char3 = new Character("tim", pop3);
         Company bananaCo = new Company(char1, "Banana", province2);
-        Building bananaMine = new Building(bananaCo, banana, 0.5, province2);
-        Building bananaMine2 = new Building(bananaCo, banana, 0.5, province3);
-        bananaMine.setWorkers(3000);
-        bananaMine2.setWorkers(2000);
+        Building bananaMine = new Building(bananaCo, good("banana"), 0.5, province2);
+        Building bananaMine2 = new Building(bananaCo, good("banana"), 0.5, province3);
+
+
+
         tick();
 
 
@@ -45,6 +51,7 @@ public class main {
 
 
     }
+
 
 
 public static void tick()
@@ -97,6 +104,12 @@ public static void tick()
 
 }
 
+    public void addGoods(Good input)
+    {
+
+        Goods.add(input);
+
+    }
 
 
     public void nationArrayPush(Nation input)
@@ -127,6 +140,18 @@ public static void tick()
         return allBuildings;
     }
 
+
+    public static Good good(String name)
+    {
+        for(int i = 0; i < Goods.size(); i++)
+        {
+            if(Goods.get(i).getType().equalsIgnoreCase(name))
+            {
+                return Goods.get(i);
+            }
+        }
+        return null;
+    }
 
 
 

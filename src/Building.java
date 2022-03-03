@@ -1,10 +1,16 @@
+import java.util.ArrayList;
+
 public class Building {
     private Company owner;
     private GoodAmt goodReserves;
     private Good producedGood;
     private double efficiency;
-    private int workers;
+    private ArrayList<PopAmt> workers = new ArrayList<PopAmt>();
     private Province location;
+    private Job[] positions;
+
+
+
 
 
     private double productionValue;
@@ -15,7 +21,7 @@ public class Building {
         this.producedGood = producedGood;
         this.efficiency = efficiency;
         this.location = location;
-        productionValue = workers * efficiency;
+        productionValue = getWorkers() * efficiency;
 
         owner.buildingArrayPush(this);
 
@@ -24,12 +30,40 @@ public class Building {
 
     }
 
+
+
     public Nation getNation()
     {
         return location.getNation();
     }
 
 
+
+    public void addWorkerGroup(PopAmt input)
+    {
+        workers.add(input);
+    }
+
+
+    public int getWorkers()
+    {
+        int total = 0;
+        for(int i = 0; i < workers.size(); i++)
+        {
+
+            total += workers.get(i).getAmt();
+        }
+        return total;
+
+    }
+
+    public Job[] getPositions() {
+        return positions;
+    }
+
+    public void setPositions(Job[] positions) {
+        this.positions = positions;
+    }
 
     public Market getMarket()
     {
@@ -39,7 +73,7 @@ public class Building {
 
     public void updateProductionValue()
     {
-        productionValue = workers * efficiency;
+        productionValue = getWorkers() * efficiency;
     }
 
     public void produce()
@@ -48,6 +82,14 @@ public class Building {
         goodReserves = new GoodAmt(productionValue / producedGood.getProductionCost(), producedGood, this);
 
     }
+
+    public void hire()
+    {
+
+
+
+    }
+
 
 
 
@@ -66,18 +108,6 @@ public class Building {
 
     public void setEfficiency(double efficiency) {
         this.efficiency = efficiency;
-    }
-
-    public int getWorkers() {
-        return workers;
-    }
-
-    public void setWorkers(int workers) {
-        this.workers = workers;
-    }
-
-    public void addWorkers(int workers) {
-        this.workers += workers;
     }
 
     public Province getLocation() {

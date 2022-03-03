@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Pop {
 
     private double happiness;
@@ -5,6 +7,7 @@ public class Pop {
     private Character[] characters = new Character[0];
     private int population;
     private int dependents;
+    private ArrayList<PopAmt> popGroups = new ArrayList<PopAmt>();
 
 
     public Pop (double happinessIn, Province locationIn, int populationIn, int dependentsIn)
@@ -14,7 +17,8 @@ public class Pop {
         location.popArrayPush(this);
         population = populationIn;
         dependents = dependentsIn;
-
+        popGroups.add(new PopAmt(population, this, location.getBuildings()[0]));
+        location.getBuildings()[0].addWorkerGroup(popGroups.get(0));
 
     }
 
