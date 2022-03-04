@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Building {
     private Company owner;
-    private GoodAmt goodReserves;
+    private ArrayList<GoodAmt>  goodReserves = new ArrayList<GoodAmt>();
     private Good producedGood;
     private double efficiency;
     private ArrayList<PopAmt> workers = new ArrayList<PopAmt>();
@@ -70,6 +70,9 @@ public class Building {
         return location.getMarket();
     }
 
+    public Company getOwner() {
+        return owner;
+    }
 
     public void updateProductionValue()
     {
@@ -78,8 +81,17 @@ public class Building {
 
     public void produce()
     {
+
         updateProductionValue();
-        goodReserves = new GoodAmt(productionValue / producedGood.getProductionCost(), producedGood, this);
+        for(int i = 0; i < goodReserves.size(); i++)
+        {
+            if(goodReserves.get(i).getGood().equals(producedGood) && goodReserves.get(i).getProducer().equals(this))
+            {
+                goodReserves.get(i).addGoods(productionValue / producedGood.getProductionCost());
+            }
+        }
+        goodReserves.add(new GoodAmt(productionValue / producedGood.getProductionCost(), producedGood, this));
+
 
     }
 

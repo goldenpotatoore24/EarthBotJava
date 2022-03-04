@@ -24,4 +24,7 @@ public class Company {
         buildings = newArr;
     }
 
+    public String getName() {
+        return name;
+    }
 }

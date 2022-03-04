@@ -1,5 +1,3 @@
-// FOR CONT: SEE IF SHIT PRODUCES
-
 import java.util.ArrayList;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -10,7 +8,7 @@ public class main {
 
     private static main realMain = new main();
     private  Nation[] nations = new Nation[0];
-    private static int tick = 0;
+    private static int tick = 58;
     private static int mins = 0;
     private static int hours = 0;
     private static Market[] markets = new Market[0];
@@ -22,7 +20,7 @@ public class main {
 
 
         Goods.add(new Good("Banana", 20, 1));
-        Goods.add(new Good("Unemployment Benefits", 0, 50));
+        Goods.add(new Good("Unemployment Benefit", 0, 50));
 
         Nation nation1 = new Nation(realMain, "United States of America", new Character("joe boden"));
         Market market1 = new Market("Bay Area", nation1, new Nation[]{nation1});
@@ -38,7 +36,9 @@ public class main {
         Character char1 = new Character("Steve Job", pop2);
         Character char2 = new Character("Bill Gate", pop3);
         Character char3 = new Character("tim", pop3);
-        Company bananaCo = new Company(char1, "Banana", province2);
+        Company bananaCo = new Company(char1, "Banana Co.", province2);
+
+
         Building bananaMine = new Building(bananaCo, good("banana"), 0.5, province2);
         Building bananaMine2 = new Building(bananaCo, good("banana"), 0.5, province3);
 
@@ -79,15 +79,17 @@ public static void tick()
             if(minTick)
             {
                 System.out.println("Minute Tick");
+                System.out.println("Building Production Tick Began");
                 for(Building building : realMain.getAllBuildings())
                 {
-                    System.out.println("Buildings are producing");
+
                     building.produce();
+
                 }
 
                 for(Market market : markets)
                 {
-                    System.out.println("There is a market");
+
                     System.out.println(market);
                 }
             }

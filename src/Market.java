@@ -40,7 +40,7 @@ public class Market {
         String txt = "Market " + name + " has";
         for(GoodAmt good : goods)
         {
-            txt += " " + good.getAmt() + " " + good.getGood().getType() + "s.";
+            txt += " " + good.getAmt() + " " + good.getGood().getType() + "s from " + good.getProducer().getOwner().getName() + " in " + good.getProducer().getLocation().getName();
         }
         return txt;
 

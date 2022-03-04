@@ -4,10 +4,12 @@ public class GoodAmt {
     private Building producer;
 
     public GoodAmt(double amt, Good good, Building producer) {
+
         this.amt = amt;
         this.good = good;
         this.producer = producer;
         producer.getMarket().goodArrayPush(this);
+
     }
 
     public double getAmt() {
@@ -16,6 +18,10 @@ public class GoodAmt {
 
     public Good getGood() {
         return good;
+    }
+
+    public void addGoods(double addAmt) {
+        amt += addAmt;
     }
 
     public Building getProducer() {
