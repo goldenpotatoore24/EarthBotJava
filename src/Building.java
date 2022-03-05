@@ -78,16 +78,18 @@ public class Building {
     {
 
         updateProductionValue();
-        for(int i = 0; i < goodReserves.size(); i++)
+        if(productionValue / producedGood.getProductionCost() == 0)
         {
-            if(goodReserves.get(i).getGood().equals(producedGood) && goodReserves.get(i).getProducer().equals(this))
-            {
-                goodReserves.get(i).addGoods(productionValue / producedGood.getProductionCost());
+
+        } else {
+            for (int i = 0; i < goodReserves.size(); i++) {
+                if (goodReserves.get(i).getGood().equals(producedGood) && goodReserves.get(i).getProducer().equals(this)) {
+                    goodReserves.get(i).addGoods(productionValue / producedGood.getProductionCost());
+                }
             }
+            goodReserves.add(new GoodAmt(productionValue / producedGood.getProductionCost(), producedGood, this));
+
         }
-        goodReserves.add(new GoodAmt(productionValue / producedGood.getProductionCost(), producedGood, this));
-
-
     }
 
     public void hire()

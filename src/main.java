@@ -1,3 +1,6 @@
+// Companies should hire if hiring will not bring them into a deficit
+// Companies should lay off workers if laying off 5% of their workers will not bring them to surplus
+
 import org.ajbrown.namemachine.Gender;
 import org.ajbrown.namemachine.NameGenerator;
 import java.util.ArrayList;
