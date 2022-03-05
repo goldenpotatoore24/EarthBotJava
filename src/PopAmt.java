@@ -2,12 +2,26 @@ public class PopAmt {
 
     private double amt;
     private Pop pop;
-    private Building workplace;
+    private Job job;
+    private double moneyReserves;
 
-    public PopAmt(double amt, Pop pop, Building workplace) {
+    public PopAmt(double amt, Pop pop, Job job) {
         this.amt = amt;
         this.pop = pop;
-        this.workplace = workplace;
+        this.job = job;
+        job.addWorkers(this);
+    }
+
+    public void setMoneyReserves(double moneyReserves) {
+        this.moneyReserves = moneyReserves;
+    }
+
+    public double getMoneyReserves() {
+        return moneyReserves;
+    }
+
+    public Pop getPop() {
+        return pop;
     }
 
     public double getAmt() {

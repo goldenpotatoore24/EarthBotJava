@@ -7,7 +7,7 @@ public class Building {
     private double efficiency;
     private ArrayList<PopAmt> workers = new ArrayList<PopAmt>();
     private Province location;
-    private Job[] positions;
+
 
 
 
@@ -57,13 +57,8 @@ public class Building {
 
     }
 
-    public Job[] getPositions() {
-        return positions;
-    }
 
-    public void setPositions(Job[] positions) {
-        this.positions = positions;
-    }
+
 
     public Market getMarket()
     {

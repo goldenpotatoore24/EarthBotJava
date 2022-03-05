@@ -5,6 +5,7 @@ public class Character {
     private Company company;
     private String name;
     private Pop pop;
+    private int money;
 
     public Character(Company company, String name, Pop pop, Gender gender) {
         this.company = company;
@@ -12,6 +13,7 @@ public class Character {
         this.pop = pop;
         this.gender = gender;
         pop.addCharacter(this);
+        money = 100000;
 
     }
 
@@ -20,7 +22,7 @@ public class Character {
         this.name = name;
         this.pop = pop;
         pop.addCharacter(this);
-
+        money = 100000;
     }
 
     public Character( Pop pop) {
@@ -28,7 +30,7 @@ public class Character {
         this.name = pop.getLocation().getNation().getGame().generateName(gender);
         this.pop = pop;
         pop.addCharacter(this);
-
+        money = 100000;
     }
 
     public Gender randomGender()
@@ -46,7 +48,11 @@ public class Character {
 
     }
 
-
+    public void invest(double amt, Company investment)
+    {
+        money -= amt;
+        investment.setMoneyReserves(investment.getMoneyReserves() - amt);
+    }
 
 
     public Character(String name) {

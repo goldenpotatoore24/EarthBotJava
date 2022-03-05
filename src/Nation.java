@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.concurrent.ConcurrentMap;
+
 public class Nation {
     private main game;
     private String name;
@@ -5,13 +8,14 @@ public class Nation {
     private Company stateCompany;
     private Character nationLeader;
     private Province capital;
+    private ArrayList<Company> companies = new ArrayList<Company>();
 
     public Nation(main game, String name, Character nationLeader) {
         this.game = game;
         this.name = name;
         this.nationLeader = nationLeader;
         game.nationArrayPush(this);
-        stateCompany = new Company(nationLeader, name + " State Company", null);
+        stateCompany = new Company(nationLeader, name + " State Company", this);
 
     }
 
@@ -29,6 +33,15 @@ public class Nation {
 
     public Company getStateCompany() {
         return stateCompany;
+    }
+
+    public void addCompany(Company input)
+    {
+        companies.add(input);
+    }
+
+    public ArrayList<Company> getCompanies() {
+        return companies;
     }
 
     public void provinceArrayPush(Province input)

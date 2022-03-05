@@ -1,15 +1,7 @@
 import org.ajbrown.namemachine.Gender;
 import org.ajbrown.namemachine.NameGenerator;
-
-import java.io.BufferedReader;
-import java.io.DataInputStream;
-import java.io.FileInputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ScheduledFuture;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 
 public class main {
 
@@ -43,7 +35,7 @@ public class main {
         Character char1 = new Character("Steve Job", pop2);
         Character char2 = new Character("Bill Gate", pop3);
         Character char3 = new Character("tim", pop3);
-        Company bananaCo = new Company(char1, "Banana Co.", province2);
+        Company bananaCo = new Company(char1, "Banana Co.", nation1);
 
 
         Building bananaMine = new Building(bananaCo, good("banana"), 0.5, province2);
@@ -74,6 +66,7 @@ public class main {
             }
         }
         return allPops;
+
     }
 
 
@@ -102,7 +95,7 @@ public class main {
             if(minTick)
             {
                 System.out.println("Minute Tick");
-                System.out.println("Building Production Tick Began");
+
                 for(Building building : realMain.getAllBuildings())
                 {
 
@@ -112,9 +105,16 @@ public class main {
 
                 for(Market market : markets)
                 {
-
                     System.out.println(market);
                 }
+
+                for(int i = 0; i < getAllCompanies().size(); i++)
+                {
+                    getAllCompanies().get(i).pay();
+                }
+
+
+
             }
 
 
@@ -125,16 +125,33 @@ public class main {
 
         }
     };
+
     ScheduledFuture<?> handle = scheduler.scheduleAtFixedRate(toRun, 1, 1, TimeUnit.SECONDS);
 
 }
 
-    public void addGoods(Good input)
+    public static void addGoods(Good input)
     {
 
         Goods.add(input);
 
     }
+
+    public static ArrayList<Company> getAllCompanies()
+    {
+        ArrayList allCompanies = new ArrayList<Company>();
+        for(int i = 0; i < nations.length; i++)
+        {
+            Nation currentNation = nations[i];
+            for(int k = 0; k < currentNation.getCompanies().size(); k++)
+            {
+                Company currentCompany = currentNation.getCompanies().get(k);
+                allCompanies.add(currentCompany);
+            }
+        }
+        return allCompanies;
+    }
+
 
 
     public void nationArrayPush(Nation input)

@@ -17,7 +17,7 @@ public class Pop {
         location.popArrayPush(this);
         population = populationIn;
         dependents = dependentsIn;
-        popGroups.add(new PopAmt(population, this, location.getBuildings()[0]));
+        popGroups.add(new PopAmt(population - dependents, this, location.getBuildings()[0].getOwner().getPositions().get(0)));
         location.getBuildings()[0].addWorkerGroup(popGroups.get(0));
 
     }
