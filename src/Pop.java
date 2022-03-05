@@ -4,7 +4,7 @@ public class Pop {
 
     private double happiness;
     private Province location;
-    private Character[] characters = new Character[0];
+    private ArrayList<Character> characters = new ArrayList<Character>();
     private int population;
     private int dependents;
     private ArrayList<PopAmt> popGroups = new ArrayList<PopAmt>();
@@ -22,25 +22,35 @@ public class Pop {
 
     }
 
-
-
-
-    public void characterArrayPush(Character input)
+    public void populateCharacters()
     {
-        Character[] newArr = new Character[characters.length + 1];
-        for(int i = 0; i < characters.length; i++)
+        if(characters.size() < 5)
         {
-            newArr[i] = characters[i];
+            for(int i = characters.size(); i < 5; i++)
+            {
+                characters.add(new Character(this));
+                System.out.println("Created new " + characters.get(characters.size() -1).getGenderName() + " Character in " + location.getName() + " named " + characters.get(characters.size() -1).getName());
+            }
         }
-        newArr[newArr.length - 1] = input;
-        characters = newArr;
+
     }
+
+
+
+    public void addCharacter(Character input)
+    {
+
+        characters.add(input);
+
+    }
+
+
 
 
     public String toString()
     {
         String txt = "This pop has a happiness of " + happiness + " and a population of " + population + ", " + dependents + " of which are dependents. They live in " + location.getName();
-        if(characters.length > 0)
+        if(characters.size() > 0)
         {
             txt += ". Its characters are: ";
             for(Character character : characters)

@@ -1,3 +1,10 @@
+import org.ajbrown.namemachine.Gender;
+import org.ajbrown.namemachine.NameGenerator;
+
+import java.io.BufferedReader;
+import java.io.DataInputStream;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -7,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 public class main {
 
     private static main realMain = new main();
-    private  Nation[] nations = new Nation[0];
+    private static Nation[] nations = new Nation[0];
     private static int tick = 58;
     private static int mins = 0;
     private static int hours = 0;
@@ -42,6 +49,10 @@ public class main {
         Building bananaMine = new Building(bananaCo, good("banana"), 0.5, province2);
         Building bananaMine2 = new Building(bananaCo, good("banana"), 0.5, province3);
 
+        for(int i = 0; i < getAllPops().size(); i++)
+        {
+            getAllPops().get(i).populateCharacters();
+        }
 
 
         tick();
@@ -52,9 +63,21 @@ public class main {
 
     }
 
+    private static ArrayList<Pop> getAllPops()
+    {
+        ArrayList<Pop> allPops = new ArrayList<Pop>();
+        for(int i = 0; i < getAllProvinces().length; i++)
+        {
+            for(int k = 0; k < getAllProvinces()[i].getPops().length; k++)
+            {
+                allPops.add(getAllProvinces()[i].getPops()[k]);
+            }
+        }
+        return allPops;
+    }
 
 
-public static void tick()
+    public static void tick()
 {
     ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
     Runnable toRun = new Runnable() {
@@ -125,6 +148,8 @@ public static void tick()
         nations = newArr;
     }
 
+
+
     public Building[] getAllBuildings()
     {
        Building[] allBuildings = new Building[0];
@@ -155,9 +180,23 @@ public static void tick()
         return null;
     }
 
+    public static String generateName(Gender gender)
+    {
+        NameGenerator generator = new NameGenerator();
+        return generator.generateName(gender).toString();
+
+    }
+
+    public static String generateName()
+    {
+        NameGenerator generator = new NameGenerator();
+    return generator.generateName().toString();
+
+    }
 
 
-    public Province[] getAllProvinces()
+
+    public static Province[] getAllProvinces()
     {
         Province[] allProvinces = new Province[0];
 
@@ -195,7 +234,7 @@ public static void tick()
         return newArr;
     }
 
-    public Province[] provinceArrayPush(Province[] provinces, Province input)
+    public static Province[] provinceArrayPush(Province[] provinces, Province input)
     {
         Province[] newArr = new Province[provinces.length + 1];
         for(int i = 0; i < provinces.length; i++)
@@ -205,5 +244,8 @@ public static void tick()
         newArr[newArr.length - 1] = input;
         return newArr;
     }
+
+
+
 
 }
