@@ -1,5 +1,4 @@
-// Companies should hire if hiring will not bring them into a deficit
-// Companies should lay off workers if laying off 5% of their workers will not bring them to surplus
+// TODO: WHEN WORKERS GET HIRED ADD THEM TO COMPANY WORKER ARRAYLIST
 
 import org.ajbrown.namemachine.Gender;
 import org.ajbrown.namemachine.NameGenerator;
@@ -22,7 +21,7 @@ public class main {
 
 
         Goods.add(new Good("Banana", 20, 1));
-        Goods.add(new Good("Unemployment Benefit", 0, 50));
+        Goods.add(new Good("Unemployment Benefit", 0, 1000));
 
         Nation nation1 = new Nation(realMain, "United States of America", new Character("joe boden"));
         Market market1 = new Market("Bay Area", nation1, new Nation[]{nation1});
@@ -31,9 +30,9 @@ public class main {
         Province province3 = new Province(nation1, 0, "San Mateo", market1);
 
         Pop pop1 = new Pop(50, province1, 150, 140);
-        Pop pop2 = new Pop(30, province2, 1000, 500);
-        Pop pop3 = new Pop(25, province1, 410, 340);
-        Pop pop4 = new Pop(100, province3, 123, 53);
+        Pop pop2 = new Pop(30, province2, 10000000, 3000000);
+        Pop pop3 = new Pop(25, province1, 700 , 234);
+        Pop pop4 = new Pop(100, province3, 5000000, 1000000);
 
         Character char1 = new Character("Steve Job", pop2);
         Character char2 = new Character("Bill Gate", pop3);
@@ -44,10 +43,12 @@ public class main {
         Building bananaMine = new Building(bananaCo, good("banana"), 0.5, province2);
         Building bananaMine2 = new Building(bananaCo, good("banana"), 0.5, province3);
 
-        for(int i = 0; i < getAllPops().size(); i++)
+       /* for(int i = 0; i < getAllPops().size(); i++)
         {
             getAllPops().get(i).populateCharacters();
         }
+
+        */
 
 
         tick();
@@ -80,7 +81,7 @@ public class main {
         public void run() {
             boolean minTick = false;
             boolean hourTick = false;
-            tick++;
+            tick += 30;
             System.out.println(tick);
             if(tick > 59)
             {
@@ -99,10 +100,16 @@ public class main {
             {
                 System.out.println("Minute Tick");
 
+                for(int i = 0; i < getAllCompanies().size(); i++)
+                {
+                    getAllCompanies().get(i).pay();
+                }
+
                 for(Building building : realMain.getAllBuildings())
                 {
 
                     building.produce();
+                    building.hire();
 
                 }
 
@@ -111,10 +118,7 @@ public class main {
                     System.out.println(market);
                 }
 
-                for(int i = 0; i < getAllCompanies().size(); i++)
-                {
-                    getAllCompanies().get(i).pay();
-                }
+
 
 
 

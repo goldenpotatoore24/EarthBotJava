@@ -20,6 +20,12 @@ public class GoodAmt {
         return good;
     }
 
+    public double getValue()
+    {
+        return amt * good.getValue();
+    }
+
+
     public void addGoods(double addAmt) {
         amt += addAmt;
     }

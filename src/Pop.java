@@ -17,10 +17,12 @@ public class Pop {
         location.popArrayPush(this);
         population = populationIn;
         dependents = dependentsIn;
-        popGroups.add(new PopAmt(population - dependents, this, location.getBuildings()[0].getOwner().getPositions().get(0)));
+        popGroups.add(new PopAmt(population - dependents, this, location.getBuildings()[0].getPositions().get(0)));
         location.getBuildings()[0].addWorkerGroup(popGroups.get(0));
 
     }
+
+
 
     public void populateCharacters()
     {
@@ -35,6 +37,27 @@ public class Pop {
 
     }
 
+    public ArrayList<PopAmt> getPopGroups() {
+        return popGroups;
+    }
+
+    public void addWorkers(Job job, int amt)
+    {
+        boolean hasFound = false;
+        for(int i = 0; i < popGroups.size(); i++)
+        {
+            if(popGroups.get(i).getJob().equals(job))
+            {
+                hasFound = true;
+                popGroups.get(0).setAmt(popGroups.get(0).getAmt() - amt);
+                popGroups.get(i).setAmt(popGroups.get(i).getAmt() + amt);
+            }
+        }
+        if(!hasFound)
+        {
+            popGroups.add(new PopAmt(amt, this, job));
+        }
+    }
 
 
     public void addCharacter(Character input)

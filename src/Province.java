@@ -16,7 +16,7 @@ public class Province {
         this.market = market;
         nation.provinceArrayPush(this);
         market.provinceArrayPush(this);
-        new Building(nation.getStateCompany(), main.good("Unemployment Benefit"), 50, this);
+        new Building(nation.getStateCompany(), main.good("Unemployment Benefit"), 50, this, false);
 
     }
 

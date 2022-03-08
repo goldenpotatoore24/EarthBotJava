@@ -51,7 +51,7 @@ public class Character {
     public void invest(double amt, Company investment)
     {
         money -= amt;
-        investment.setMoneyReserves(investment.getMoneyReserves() - amt);
+        investment.setMoneyReserves(investment.getMoneyReserves() + amt);
     }
 
 

@@ -16,13 +16,23 @@ public class Market {
 
     public void goodArrayPush(GoodAmt input)
     {
-        GoodAmt[] newArr = new GoodAmt[goods.length + 1];
-        for(int i = 0; i < goods.length; i++)
-        {
-            newArr[i] = goods[i];
+        if(input.getAmt() > 0) {
+            boolean alreadyExists = false;
+            for (GoodAmt good : goods) {
+                if (good.getProducer() == input.getProducer() && input.getGood() == input.getGood()) {
+                    alreadyExists = true;
+                    good.addGoods(input.getAmt());
+                }
+            }
+            if (!alreadyExists) {
+                GoodAmt[] newArr = new GoodAmt[goods.length + 1];
+                for (int i = 0; i < goods.length; i++) {
+                    newArr[i] = goods[i];
+                }
+                newArr[newArr.length - 1] = input;
+                goods = newArr;
+            }
         }
-        newArr[newArr.length - 1] = input;
-        goods = newArr;
     }
     public void provinceArrayPush(Province input)
     {
