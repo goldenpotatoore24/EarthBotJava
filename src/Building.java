@@ -61,9 +61,17 @@ public class Building {
 
 
 
-    public void addWorkerGroup(PopAmt input)
+    public void addWorkers(PopAmt input)
     {
-        workers.add(input);
+        for(int i = 0; i < workers.size(); i++)
+        {
+            if(workers.get(i).getPop().equals(input.getPop()) && workers.get(i).getJob().equals(input.getJob()))
+            {
+                workers.get(i).setAmt(workers.get(i).getAmt() + input.getAmt());
+                return;
+            }
+        }
+       workers.add(input);
     }
 
 
@@ -80,7 +88,6 @@ public class Building {
         int total = 0;
         for(int i = 0; i < workers.size(); i++)
         {
-
             total += workers.get(i).getAmt();
         }
         return total;
@@ -88,10 +95,13 @@ public class Building {
     }
 
 
-    public void hire() {
+    public void hire()
+    {
 
-        if (canHire()) {
-            for (int k = 0; k < positions.size(); k++) {
+        if (canHire())
+        {
+            for (int k = 0; k < positions.size(); k++)
+            {
                 Job job = positions.get(k);
                 if(job.shouldHire() > 0)
                 {
@@ -103,11 +113,14 @@ public class Building {
                     {
                         location.getPops()[0].addWorkers(job, location.getPops()[0].getPopGroups().get(0).getAmt());
                         System.out.println(owner.getName() + " hired " + location.getPops()[0].getPopGroups().get(0).getAmt() + " for the " + producedGood.getType() + " production in " + location.getName());
+
                     }
                 }
             }
         }
     }
+
+
 
 
     public boolean canHire() {

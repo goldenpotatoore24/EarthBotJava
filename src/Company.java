@@ -68,6 +68,12 @@ public class Company {
         return name;
     }
 
+    public void addMoneyReserves(double amt)
+    {
+        moneyReserves += amt;
+    }
+
+
 
 }
 

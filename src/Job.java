@@ -38,6 +38,10 @@ public class Job {
         return neededWorkers;
     }
 
+    public Building getBuilding() {
+        return building;
+    }
+
     public int shouldHire()
     {
         if(wages == 0)

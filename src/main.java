@@ -1,5 +1,3 @@
-// TODO: WHEN WORKERS GET HIRED ADD THEM TO COMPANY WORKER ARRAYLIST
-
 import org.ajbrown.namemachine.Gender;
 import org.ajbrown.namemachine.NameGenerator;
 import java.util.ArrayList;
@@ -116,6 +114,7 @@ public class main {
                 for(Market market : markets)
                 {
                     System.out.println(market);
+
                 }
 
 

@@ -1,9 +1,11 @@
+import java.util.ArrayList;
+
 public class Market {
     private String name;
     private Nation leader;
     private Nation[] members;
     private Province[] provinces = new Province[0];
-    private GoodAmt[] goods = new GoodAmt[0];
+    private ArrayList<GoodAmt> goods = new ArrayList<GoodAmt>();
 
     public Market(String name, Nation leader, Nation[] members) {
         this.name = name;
@@ -16,23 +18,7 @@ public class Market {
 
     public void goodArrayPush(GoodAmt input)
     {
-        if(input.getAmt() > 0) {
-            boolean alreadyExists = false;
-            for (GoodAmt good : goods) {
-                if (good.getProducer() == input.getProducer() && input.getGood() == input.getGood()) {
-                    alreadyExists = true;
-                    good.addGoods(input.getAmt());
-                }
-            }
-            if (!alreadyExists) {
-                GoodAmt[] newArr = new GoodAmt[goods.length + 1];
-                for (int i = 0; i < goods.length; i++) {
-                    newArr[i] = goods[i];
-                }
-                newArr[newArr.length - 1] = input;
-                goods = newArr;
-            }
-        }
+        goods.add(input);
     }
     public void provinceArrayPush(Province input)
     {
@@ -54,6 +40,16 @@ public class Market {
         }
         return txt;
 
+    }
+
+    public void sellAll()
+    {
+        for(int i = 0; i < goods.size(); i++)
+        {
+            goods.get(i).getProducer().getOwner().addMoneyReserves(goods.get(i).getValue());
+            goods.remove(i);
+            i--;
+        }
     }
 
 

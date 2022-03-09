@@ -18,7 +18,7 @@ public class Pop {
         population = populationIn;
         dependents = dependentsIn;
         popGroups.add(new PopAmt(population - dependents, this, location.getBuildings()[0].getPositions().get(0)));
-        location.getBuildings()[0].addWorkerGroup(popGroups.get(0));
+        location.getBuildings()[0].addWorkers(popGroups.get(0));
 
     }
 
@@ -55,7 +55,9 @@ public class Pop {
         }
         if(!hasFound)
         {
-            popGroups.add(new PopAmt(amt, this, job));
+            PopAmt newGroup = new PopAmt(amt, this, job);
+            popGroups.add(newGroup);
+            job.getBuilding().addWorkers(newGroup);
         }
     }
 
